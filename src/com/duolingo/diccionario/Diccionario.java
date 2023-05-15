@@ -13,8 +13,8 @@ public class Diccionario {
         diccionario = new HashMap<String, Set<String>>();
     }
 
-    public boolean añadirpalabra(String palabra) {
-        String palabras_Sanitanizadas = palabra_Sanitanizada(palabra);
+    public boolean añadirPalabra(String palabra) {
+        String palabras_Sanitanizadas = palabras_Sanitanizadas(palabra);
         if (palabras_Sanitanizadas.length() == 0) {
             return false;
         }

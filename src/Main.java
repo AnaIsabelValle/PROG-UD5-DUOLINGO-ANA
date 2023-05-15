@@ -1,6 +1,2 @@
-public class Main {
+import java.util.Dictionary;
 
-    public static void main(String[] args) {
-	// write your code here
-    }
-}
