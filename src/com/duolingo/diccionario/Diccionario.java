@@ -27,8 +27,24 @@ public class Diccionario {
             palabras = new HashSet<String>();
             diccionario.put(inicial, palabras);
         }
-        return palabras.add(nuevaPalabra);
+        return palabras.add(nuevaPalabra
+        );
     }
+
+    public boolean eliminarPalabra(String palabra) {
+        String eliminarPalabra = eliminarPalabra(palabra);
+        if (eliminarPalabra.length() == 0) {
+            return false;
+        }
+        String inicial = eliminarPalabra.CharArt(0);
+        Set<String> palabras = diccionario.get(inicial);
+        if (palabras == null) {
+            return false;
+        }
+        return palabras.remove(eliminarPalabra);
+    }
+
+
 }
 
 
