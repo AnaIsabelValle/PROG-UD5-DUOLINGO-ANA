@@ -1,25 +1,24 @@
 import com.duolingo.diccionario.Diccionario;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
+    private Diccionario diccionario;
+    private Scanner scanner;
 
-    public static void main(String[] args {
-        // Crear el diccionario
+    public Main() {
         Diccionario diccionario = new Diccionario();
+        scanner = new Scanner(System.in);
 
-        System.out.println("************----ooOOoo----************");
-        System.out.println("Bienvenido al diccionario de Duolingo-Ana.");
+        System.out.println(" Bienvenido al diccionario de palabras Duolingo-Ana");
 
-        // Menú de opciones
         boolean salida = false;
-        Scanner scanner = new Scanner(System.in);
-
         while (!salida) {
-            System.out.println("\nSeleccione una opción:");
+            System.out.println("Querido usuraio, introduzca una opción:");
             System.out.println("1. Añadir palabra");
             System.out.println("2. Eliminar palabra");
-            System.out.println("3. Buscar palabra");
+            System.out.println("3. Existe palabra");
             System.out.println("4. Mostrar iniciales disponibles");
             System.out.println("5. Ver palabras por inicial");
             System.out.println("6. Cerrar programa");
@@ -29,56 +28,87 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    System.out.println("Querido usuario, introduzca la palabra a añadir:");
-                    String palabraParaAñadir = scanner.nextLine();
-                    if (diccionario.añadirPalabra(palabraParaAñadir)) {
-                        System.out.println("La palabra se ha guardado correctamente.");
-                    } else {
-                        System.out.println("La palabra ya está almacenada en el diccionario.");
-                    }
+                    añadirPalabra();
                     break;
                 case 2:
-                    System.out.println("Introduzca  la palabra a eliminar:");
-                    String palabraParaEliminar = scanner.nextLine();
-                    if (diccionario.eliminarPalabra(palabraParaEliminar)) {
-                        System.out.println("La palabra se ha eliminado correctamente.");
-                    } else {
-                        System.out.println("La palabra no estaba almacenada en el diccionario.");
-                    }
+                    eliminarPalabra();
                     break;
                 case 3:
-                    System.out.println("Introduzca la palabra a buscar:");
-                    String palabraParaBuscar = scanner.nextLine();
-                    if (diccionario.containsWord(palabraParaBuscar)) {
-                        System.out.println("La palabra se ha encontrado en el diccionario.");
-                    } else {
-                        System.out.println("La palabra no se ha encontrado en el diccionario.");
-                    }
+                    existirPalabra();
                     break;
                 case 4:
-                    System.out.println("Iniciales disponibles:");
-                    for (char inicial : diccionario.getInicialDisponible()) {
-                        System.out.println(inicial);
-                    }
+                    mostrarIniciales();
                     break;
                 case 5:
-                    System.out.println("Ingrese una inicial:");
-                    char inicial = scanner.nextLine().charAt(0);
-                    System.out.println("Palabras que empiezan con '" + inicial + "':");
-                    for (String word : diccionario.getPalabraInicial(inicial)) {
-                        System.out.println(palabra);
-                    }
+                    verPalabrasPorInicial();
                     break;
                 case 6:
                     salida = true;
+                    System.out.println(" Esperamos que le haya gustado y continúe haciendo consultas");
                     break;
                 default:
-                    System.out.println("Ha seleccionada una opción icorrecta, inténtelo  de nuevo.");
+                    System.out.println("Ha seleccionado una opción incorrecta, por favor introduzca una de nuevo.");
                     break;
             }
         }
-
-        scanner.close();
     }
-}
 
+
+    private void verPalabrasPorInicial() {
+        System.out.println("Introduce la inicial:");
+        char inicial = scanner.nextLine().charAt(0);
+        Set<String> palabras = diccionario.getWordsStartingWith(inicial);
+        if (palabras.size() == 0) {
+            System.out.println("No hay palabras almacenadas que empiecen por esa inicial.");
+        } else {
+            System.out.println("Las palabras almacenadas que empiezan por " + inicial + " son:");
+            for (String word : palabras) {
+                System.out.println(word);
+            }
+        }
+    }
+
+    private void mostrarIniciales() {
+        Set<Character> iniciales = diccionario.getInitials();
+        if (iniciales.size() == 0) {
+            System.out.println("No hay iniciales disponibles.");
+        } else {
+            System.out.println("Las iniciales disponibles son:");
+            for (char inicial : iniciales) {
+                System.out.println(inicial);
+            }
+        }
+    }
+
+    private void existirPalabra() {
+
+        System.out.println("Introduce la palabra que quieres buscar:");
+        String palabra = scanner.nextLine();
+        if (diccionario.hasWord(palabra)) {
+            System.out.println("La palabra está almacenada.");
+        } else {
+            System.out.println("La palabra no está almacenada.");
+        }
+    }
+
+    private void eliminarPalabra() {
+        System.out.println("Introduce la palabra que quieres eliminar:");
+        String palabra = scanner.nextLine();
+        if (diccionario.removeWord(palabra)) {
+            System.out.println("La palabra se ha eliminado correctamente.");
+        } else {
+            System.out.println("La palabra no estaba almacenada.");
+        }
+    }
+
+    private void añadirPalabra() {
+        System.out.println("Introduce la palabra que quieres añadir:");
+        String palabra = scanner.nextLine();
+        if (diccionario.addWord(palabra)) {
+            System.out.println("La palabra se ha añadido correctamente.");
+        } else {
+            System.out.println("La palabra ya estaba almacenada.");
+        }
+    }
+
+}
