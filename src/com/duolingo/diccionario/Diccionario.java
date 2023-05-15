@@ -54,8 +54,23 @@ public class Diccionario {
         return palabras.contains(palabras_Sanitanizadas);
     }
 
+    public Set<String> getIniciales() {
 
+        return diccionario.keySet();
+    }
+    public Set<String> getPalabrasQueEmpiecen(char inicial) {
+        Set<String> palabras = diccionario.get(inicial);
+        if (palabras == null) {
+            palabras = new HashSet<String>();
+        }
+        return palabras;
+    }
+    private String palabraSanitanizada(String palabra)
+    {
+        return palabra.trim().toLowerCase();
+    }
 }
+
 
 
 

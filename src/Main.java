@@ -57,7 +57,7 @@ public class Main {
     private void verPalabrasPorInicial() {
         System.out.println("Introduce la inicial:");
         char inicial = scanner.nextLine().charAt(0);
-        Set<String> palabras = diccionario.getWordsStartingWith(inicial);
+        Set<String> palabras = diccionario.getPalabrasQueEmpiecen(inicial);
         if (palabras.size() == 0) {
             System.out.println("No hay palabras almacenadas que empiecen por esa inicial.");
         } else {
@@ -69,7 +69,7 @@ public class Main {
     }
 
     private void mostrarIniciales() {
-        Set<Character> iniciales = diccionario.getInitials();
+        Set<Character> iniciales = diccionario.getIniciales();
         if (iniciales.size() == 0) {
             System.out.println("No hay iniciales disponibles.");
         } else {
