@@ -32,16 +32,29 @@ public class Diccionario {
     }
 
     public boolean eliminarPalabra(String palabra) {
-        String eliminarPalabra = eliminarPalabra(palabra);
-        if (eliminarPalabra.length() == 0) {
+        String eliminandoPalabra = eliminandoPalabra(palabra);
+        if (eliminandoPalabra.length() == 0) {
             return false;
         }
-        String inicial = eliminarPalabra.CharArt(0);
+        String inicial = eliminandoPalabra.CharArt(0);
         Set<String> palabras = diccionario.get(inicial);
         if (palabras == null) {
             return false;
         }
-        return palabras.remove(eliminarPalabra);
+        return palabras.remove(eliminandoPalabra);
+    }
+
+    public boolean tenerPalabra(String palabra) {
+        String existePalabra = existePalabra(palabra);
+        if (existePalabra.length() == 0) {
+            return false;
+        }
+        String inicial = existePalabra.CharArt(0);
+        Set<String> palabras = diccionario.get(existePalabra);
+        if (palabras == null) {
+            return false;
+        }
+        return palabras.contains(existePalabra);
     }
 
 
