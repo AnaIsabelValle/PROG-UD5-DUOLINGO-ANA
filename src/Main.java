@@ -69,7 +69,7 @@ public class Main {
     }
 
     private void mostrarIniciales() {
-        Set<Character> iniciales = diccionario.getIniciales();
+        Set<String> iniciales = diccionario.getIniciales();
         if (iniciales.size() == 0) {
             System.out.println("No hay iniciales disponibles.");
         } else {
@@ -84,7 +84,7 @@ public class Main {
 
         System.out.println("Introduce la palabra que quieres buscar:");
         String palabra = scanner.nextLine();
-        if (diccionario.hasWord(palabra)) {
+        if (diccionario.tenerPalabra(palabra)) {
             System.out.println("La palabra está almacenada.");
         } else {
             System.out.println("La palabra no está almacenada.");
@@ -94,7 +94,7 @@ public class Main {
     private void eliminarPalabra() {
         System.out.println("Introduce la palabra que quieres eliminar:");
         String palabra = scanner.nextLine();
-        if (diccionario.removeWord(palabra)) {
+        if (diccionario.eliminarPalabra(palabra)) {
             System.out.println("La palabra se ha eliminado correctamente.");
         } else {
             System.out.println("La palabra no estaba almacenada.");
@@ -104,7 +104,7 @@ public class Main {
     private void añadirPalabra() {
         System.out.println("Introduce la palabra que quieres añadir:");
         String palabra = scanner.nextLine();
-        if (diccionario.addWord(palabra)) {
+        if (diccionario.añadirPalabra(palabra)) {
             System.out.println("La palabra se ha añadido correctamente.");
         } else {
             System.out.println("La palabra ya estaba almacenada.");
