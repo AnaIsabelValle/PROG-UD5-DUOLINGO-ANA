@@ -7,14 +7,14 @@ import java.util.Set;
 
 public class Diccionario {
 
-    private Map<String, Set<String>> diccionario;
+    private Map<Character, Set<String>> diccionario;
 
     public Diccionario() {
-        diccionario = new HashMap<String, Set<String>>();
+        diccionario = new HashMap<Character, Set<String>>();
     }
 
     public boolean añadirPalabra(String palabra) {
-        String palabras_Sanitanizadas = palabras_Sanitanizadas(palabra);
+        String palabras_Sanitanizadas = palabraSanitanizada(palabra);
         if (palabras_Sanitanizadas.length() == 0) {
             return false;
         }
@@ -29,7 +29,7 @@ public class Diccionario {
     }
 
     public boolean eliminarPalabra(String palabra) {
-        String palabras_Sanitanizadas = palabra_Sanitanizada(palabra);
+        String palabras_Sanitanizadas = palabraSanitanizada(palabra);
         if (palabras_Sanitanizadas.length() == 0) {
             return false;
         }
@@ -42,7 +42,7 @@ public class Diccionario {
     }
 
     public boolean tenerPalabra(String palabra) {
-        String palabras_Sanitanizadas = palabra_Sanitanizada(palabra);
+        String palabras_Sanitanizadas = palabraSanitanizada(palabra);
         if (palabras_Sanitanizadas.length() == 0) {
             return false;
         }
@@ -54,10 +54,11 @@ public class Diccionario {
         return palabras.contains(palabras_Sanitanizadas);
     }
 
-    public Set<String> getIniciales() {
+    public Set<Character> getIniciales() {
 
         return diccionario.keySet();
     }
+
     public Set<String> getPalabrasQueEmpiecen(char inicial) {
         Set<String> palabras = diccionario.get(inicial);
         if (palabras == null) {
@@ -65,8 +66,8 @@ public class Diccionario {
         }
         return palabras;
     }
-    private String palabraSanitanizada(String palabra)
-    {
+
+    private String palabraSanitanizada(String palabra) {
         return palabra.trim().toLowerCase();
     }
 }
