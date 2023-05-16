@@ -74,7 +74,7 @@ public class Main {
             System.out.println("No hay iniciales disponibles.");
         } else {
             System.out.println("Las iniciales disponibles son:");
-            for (char inicial : iniciales) {
+            for (String inicial : iniciales) {
                 System.out.println(inicial);
             }
         }
