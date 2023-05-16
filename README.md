@@ -40,11 +40,11 @@ Se basa en una estructura de datos donde implementa un menú dónde el usuario p
 3. Métodos:
    1. En la clase ejecutable **Main**:
       1. Elaboración del Menú, siendo sus funcionnes:
-         1. Añadir palabra: Permite inntroducir y almacenar
-         2. Eliminar palabra: Solicita al usuario la palabra que será eliminada
-         3. Existe palabra: Solicita al usuario la palabra que buscará en el diccionario
-         4. Mostrar iniciales disponibles: Muestra una lista de palabras  
-         5. Ver palabras por inicial: Mostrar las palabras almacenadas
-         6. Cerrar programa
+         1. **Añadir palabra:** Permite inntroducir y almacenar
+         2. **Eliminar palabra:** Solicita al usuario la palabra que será eliminada
+         3. **Existe palabra:** Solicita al usuario la palabra que buscará en el diccionario
+         4. **Mostrar iniciales** disponibles: Muestra una lista de palabras  
+         5. **Ver palabras por inicial:** Mostrar las palabras almacenadas
+         6. **Cerrar programa**
    2. En la clase **Diccionario**:
       1. Se implementa los métodos
