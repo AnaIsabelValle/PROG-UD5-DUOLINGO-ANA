@@ -1,0 +1,10 @@
+
+# Ignorar el directorio llamado .idea
+/.idea
+/out
+# Ignorar todos los archivos .log
+*.log
+# Ignorar todos los archivos en cualquier directorio llamado temp
+temp/
+# Ignorar todos los archivos .iml
+*.iml
